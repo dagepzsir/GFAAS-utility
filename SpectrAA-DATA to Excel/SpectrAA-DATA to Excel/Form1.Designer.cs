@@ -29,16 +29,17 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.fileRadioButton = new System.Windows.Forms.RadioButton();
             this.folderRadioButton = new System.Windows.Forms.RadioButton();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.xlsRadioButton = new System.Windows.Forms.RadioButton();
-            this.csvRadioButton = new System.Windows.Forms.RadioButton();
+            this.fileRadioButton = new System.Windows.Forms.RadioButton();
             this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.outputFolderDialog = new System.Windows.Forms.FolderBrowserDialog();
+            this.inputFolderDialog = new System.Windows.Forms.FolderBrowserDialog();
+            this.inputFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -52,6 +53,16 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Open options";
             // 
+            // folderRadioButton
+            // 
+            this.folderRadioButton.AutoSize = true;
+            this.folderRadioButton.Location = new System.Drawing.Point(6, 38);
+            this.folderRadioButton.Name = "folderRadioButton";
+            this.folderRadioButton.Size = new System.Drawing.Size(54, 17);
+            this.folderRadioButton.TabIndex = 1;
+            this.folderRadioButton.Text = "Folder";
+            this.folderRadioButton.UseVisualStyleBackColor = true;
+            // 
             // fileRadioButton
             // 
             this.fileRadioButton.AutoSize = true;
@@ -64,49 +75,6 @@
             this.fileRadioButton.Text = "File";
             this.fileRadioButton.UseVisualStyleBackColor = true;
             // 
-            // folderRadioButton
-            // 
-            this.folderRadioButton.AutoSize = true;
-            this.folderRadioButton.Location = new System.Drawing.Point(6, 38);
-            this.folderRadioButton.Name = "folderRadioButton";
-            this.folderRadioButton.Size = new System.Drawing.Size(54, 17);
-            this.folderRadioButton.TabIndex = 1;
-            this.folderRadioButton.Text = "Folder";
-            this.folderRadioButton.UseVisualStyleBackColor = true;
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.csvRadioButton);
-            this.groupBox2.Controls.Add(this.xlsRadioButton);
-            this.groupBox2.Location = new System.Drawing.Point(11, 77);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(86, 59);
-            this.groupBox2.TabIndex = 1;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Output format";
-            // 
-            // xlsRadioButton
-            // 
-            this.xlsRadioButton.AutoSize = true;
-            this.xlsRadioButton.Checked = true;
-            this.xlsRadioButton.Location = new System.Drawing.Point(6, 15);
-            this.xlsRadioButton.Name = "xlsRadioButton";
-            this.xlsRadioButton.Size = new System.Drawing.Size(37, 17);
-            this.xlsRadioButton.TabIndex = 0;
-            this.xlsRadioButton.TabStop = true;
-            this.xlsRadioButton.Text = "xls";
-            this.xlsRadioButton.UseVisualStyleBackColor = true;
-            // 
-            // csvRadioButton
-            // 
-            this.csvRadioButton.AutoSize = true;
-            this.csvRadioButton.Location = new System.Drawing.Point(6, 38);
-            this.csvRadioButton.Name = "csvRadioButton";
-            this.csvRadioButton.Size = new System.Drawing.Size(42, 17);
-            this.csvRadioButton.TabIndex = 1;
-            this.csvRadioButton.Text = "csv";
-            this.csvRadioButton.UseVisualStyleBackColor = true;
-            // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(103, 12);
@@ -115,39 +83,62 @@
             this.button1.TabIndex = 2;
             this.button1.Text = "Convert";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // textBox1
+            // label2
             // 
-            this.textBox1.Location = new System.Drawing.Point(91, 142);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(205, 20);
-            this.textBox1.TabIndex = 3;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(10, 145);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(71, 13);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Output folder:";
             // 
-            // label1
+            // textBox2
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(14, 145);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(74, 13);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Sample name:";
+            this.textBox2.Location = new System.Drawing.Point(84, 142);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(205, 20);
+            this.textBox2.TabIndex = 6;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(214, 168);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 7;
+            this.button2.Text = "Browse";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // inputFileDialog
+            // 
+            this.inputFileDialog.FileName = "openFileDialog1";
+            this.inputFileDialog.Filter = "\"SpectrAA DATA files|*.DATA|All files|*.*\"";
+            this.inputFileDialog.Multiselect = true;
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(11, 168);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(197, 23);
+            this.progressBar1.TabIndex = 8;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(307, 177);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
+            this.ClientSize = new System.Drawing.Size(299, 202);
+            this.Controls.Add(this.progressBar1);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "Form1";
             this.Text = "Form1";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -158,12 +149,14 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton folderRadioButton;
         private System.Windows.Forms.RadioButton fileRadioButton;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.RadioButton csvRadioButton;
-        private System.Windows.Forms.RadioButton xlsRadioButton;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.FolderBrowserDialog outputFolderDialog;
+        private System.Windows.Forms.FolderBrowserDialog inputFolderDialog;
+        private System.Windows.Forms.OpenFileDialog inputFileDialog;
+        private System.Windows.Forms.ProgressBar progressBar1;
     }
 }
 
