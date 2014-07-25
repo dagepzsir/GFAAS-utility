@@ -39,6 +39,7 @@
             this.inputFolderDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.inputFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.progressBar2 = new System.Windows.Forms.ProgressBar();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -46,7 +47,7 @@
             // 
             this.groupBox1.Controls.Add(this.folderRadioButton);
             this.groupBox1.Controls.Add(this.fileRadioButton);
-            this.groupBox1.Location = new System.Drawing.Point(11, 12);
+            this.groupBox1.Location = new System.Drawing.Point(7, 18);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(86, 59);
             this.groupBox1.TabIndex = 0;
@@ -77,7 +78,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(103, 12);
+            this.button1.Location = new System.Drawing.Point(99, 18);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(193, 124);
             this.button1.TabIndex = 2;
@@ -88,7 +89,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(10, 145);
+            this.label2.Location = new System.Drawing.Point(6, 151);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(71, 13);
             this.label2.TabIndex = 5;
@@ -96,16 +97,17 @@
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(84, 142);
+            this.textBox2.Location = new System.Drawing.Point(80, 148);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(205, 20);
+            this.textBox2.Size = new System.Drawing.Size(212, 20);
             this.textBox2.TabIndex = 6;
+            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(214, 168);
+            this.button2.Location = new System.Drawing.Point(210, 174);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.Size = new System.Drawing.Size(82, 23);
             this.button2.TabIndex = 7;
             this.button2.Text = "Browse";
             this.button2.UseVisualStyleBackColor = true;
@@ -119,16 +121,24 @@
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(11, 168);
+            this.progressBar1.Location = new System.Drawing.Point(7, 203);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(197, 23);
+            this.progressBar1.Size = new System.Drawing.Size(285, 23);
             this.progressBar1.TabIndex = 8;
+            // 
+            // progressBar2
+            // 
+            this.progressBar2.Location = new System.Drawing.Point(7, 174);
+            this.progressBar2.Name = "progressBar2";
+            this.progressBar2.Size = new System.Drawing.Size(197, 23);
+            this.progressBar2.TabIndex = 9;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(299, 202);
+            this.ClientSize = new System.Drawing.Size(299, 244);
+            this.Controls.Add(this.progressBar2);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.textBox2);
@@ -159,6 +169,7 @@
         private System.Windows.Forms.FolderBrowserDialog inputFolderDialog;
         private System.Windows.Forms.OpenFileDialog inputFileDialog;
         private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.ProgressBar progressBar2;
     }
 }
 

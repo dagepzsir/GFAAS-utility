@@ -20,13 +20,15 @@ namespace SpectrAA_DATA_to_Excel
             return output;
         }
 
-        public static void ExportToXls(string file, string outputFolder = "", ProgressBar bar = null)
+        public static void ExportToXls(string file, string outputFolder = "", ProgressBar bar = null, ProgressBar barFile = null)
         {
 
             XLWorkbook workbook = new XLWorkbook();
             IXLWorksheet ws =  workbook.Worksheets.Add("munkalap1");
             using(StreamReader reader = new StreamReader(file))
             {
+                barFile.Maximum = File.ReadLines(file).Count();
+                barFile.Value = 0;
                 string[] firstLine = reader.ReadLine().Split(',');
                 ws.Cell(1, 1).Value = getTableName(firstLine);
                 ws.Cell(1, 2).Value = "I";
@@ -59,6 +61,8 @@ namespace SpectrAA_DATA_to_Excel
                         ws.Cell(sor, oszlopI0 + 1).Value = -Math.Log10(decI / decI0);
                         sor++;
                     }
+                    if (barFile != null)
+                        barFile.Value++;
                 }
                 if (bar != null)
                     bar.Value++;

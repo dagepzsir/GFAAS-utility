@@ -28,7 +28,7 @@ namespace SpectrAA_DATA_to_Excel
                 if (inputFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                     files.AddRange(inputFileDialog.FileNames);
             }
-            else
+            else if(folderRadioButton.Checked)
             {
                 if (inputFolderDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
@@ -39,7 +39,7 @@ namespace SpectrAA_DATA_to_Excel
             }
 
             progressBar1.Maximum = files.Count;
-            files.ForEach(item => Exporter.ExportToXls(item, textBox2.Text, progressBar1));
+            files.ForEach(item => Exporter.ExportToXls(item, textBox2.Text, progressBar1, progressBar2));
             MessageBox.Show("Convertion done!", "Finished", MessageBoxButtons.OK, MessageBoxIcon.Information);
             output.Clear();
             files.Clear();
@@ -62,6 +62,11 @@ namespace SpectrAA_DATA_to_Excel
             {
                 textBox2.Text = outputFolderDialog.SelectedPath;
             }
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
