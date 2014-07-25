@@ -40,7 +40,7 @@ namespace SpectrAA_DATA_to_Excel
 
             progressBar1.Maximum = files.Count;
             files.ForEach(item => Exporter.ExportToXls(item, textBox2.Text, progressBar1));
-
+            MessageBox.Show("Convertion done!", "Finished", MessageBoxButtons.OK, MessageBoxIcon.Information);
             output.Clear();
             files.Clear();
         }

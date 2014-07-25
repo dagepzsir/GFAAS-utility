@@ -24,7 +24,7 @@ namespace SpectrAA_DATA_to_Excel
         {
 
             XLWorkbook workbook = new XLWorkbook();
-            IXLWorksheet ws =  workbook.Worksheets.Add("lofasz");
+            IXLWorksheet ws =  workbook.Worksheets.Add("munkalap1");
             using(StreamReader reader = new StreamReader(file))
             {
                 string[] firstLine = reader.ReadLine().Split(',');

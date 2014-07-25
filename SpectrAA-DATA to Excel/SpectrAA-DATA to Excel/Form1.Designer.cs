@@ -114,7 +114,7 @@
             // inputFileDialog
             // 
             this.inputFileDialog.FileName = "openFileDialog1";
-            this.inputFileDialog.Filter = "\"SpectrAA DATA files|*.DATA|All files|*.*\"";
+            this.inputFileDialog.Filter = "\"SpectrAA DATA files|*.DATA|All files|*.*";
             this.inputFileDialog.Multiselect = true;
             // 
             // progressBar1
@@ -135,6 +135,8 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "Form1";
             this.groupBox1.ResumeLayout(false);
