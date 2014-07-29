@@ -64,9 +64,5 @@ namespace SpectrAA_DATA_to_Excel
             }
         }
 
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }
