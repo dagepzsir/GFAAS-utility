@@ -34,15 +34,17 @@ namespace SpectrAA_DATA_to_Excel
                 {
                     DirectorySearch(inputFolderDialog.SelectedPath);
                     files.AddRange(output);
+                    progressBar1.Maximum = files.Count;
+                    files.ForEach(item => Exporter.ExportToXls(item, textBox2.Text, progressBar1, progressBar2));
+                    MessageBox.Show("Convertion done!", "Finished", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    output.Clear();
+                    files.Clear();
+
                 }
 
             }
 
-            progressBar1.Maximum = files.Count;
-            files.ForEach(item => Exporter.ExportToXls(item, textBox2.Text, progressBar1, progressBar2));
-            MessageBox.Show("Convertion done!", "Finished", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            output.Clear();
-            files.Clear();
+            
         }
 
         private void DirectorySearch(string path)
